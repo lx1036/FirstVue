@@ -8,7 +8,7 @@ Vue.component('todo-item', {
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app6',
+  el: '#example',
   data: {
     // message: 'Vue is great!'
     // message: 'You loaded this page on ' + new Date()
@@ -23,7 +23,8 @@ new Vue({
       { text: 'Vegetables' },
       { text: 'Cheese' },
       { text: 'Whatever else humans are supposed to eat' }
-    ]
+    ],
+    numbers: [ 1, 2, 3, 4, 5 ]
   },
   methods: {
     reverseMessage: function () {
@@ -39,6 +40,18 @@ new Vue({
       if (!value) return ''
       value = value.toString()
       return value.charAt(0).toUpperCase() + value.slice(1)
+    }
+  },
+  computed: {
+    // a computed getter
+    reversedMessage: function () {
+      // `this` points to the vm instance
+      return this.message.split('').reverse().join('')
+    },
+    evenNumbers: function () {
+      return this.numbers.filter(function (number) {
+        return number % 2 === 0
+      })
     }
   }
   // template: '<App/>',
